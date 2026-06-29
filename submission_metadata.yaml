@@ -1,0 +1,64 @@
+# Redrob Hackathon — Submission Metadata
+# Fill in the <<< ... >>> placeholders with your real details before submitting.
+
+team_name: "<<< your registered team / participant ID >>>"
+
+primary_contact:
+  name: "Vikas Kumar"
+  email: "<<< your email >>>"
+  phone: "<<< +91-XXXXXXXXXX >>>"
+
+team_members:
+  - name: "Vikas Kumar"
+    email: "<<< your email >>>"
+    role: "Team Lead / ML Engineer"
+
+# ---------------------------------------------------------------------------
+github_repo: "<<< https://github.com/YOUR_USERNAME/redrob-ranker >>>"
+sandbox_link: "<<< your Colab notebook share link (see colab_sandbox.ipynb) >>>"
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+# ---------------------------------------------------------------------------
+compute:
+  platform: "Google Colab (CPU runtime)  /  MacBook"   # edit to match where you ran it
+  cpu_cores: 4
+  ram_gb: 16
+  python_version: "3.11"
+  os: "Ubuntu 22.04 (Colab)"
+  uses_gpu_for_inference: false          # ranking step is CPU-only
+  has_network_during_ranking: false      # no API calls during ranking
+  pre_computation_required: false        # default TF-IDF+LSA needs no precompute
+  pre_computation_time_minutes: 0        # set >0 only if you use the MiniLM upgrade
+
+# ---------------------------------------------------------------------------
+ai_tools_used:
+  - "Claude"
+
+ai_usage_summary: |
+  Used Claude for architecture discussion, code review, and drafting the
+  scoring logic and reasoning templates. All design decisions (component
+  weights, trap detection, behavioral multiplier) were reviewed and tuned by
+  me, and I can walk through every part of the code. No candidate data was
+  sent to any hosted LLM during ranking — the ranking step is fully local,
+  CPU-only, and offline.
+
+# ---------------------------------------------------------------------------
+methodology_summary: |
+  Hybrid ranker over candidate EVIDENCE text (summary + career-history
+  descriptions), deliberately ignoring unreliable current_title and raw skill
+  labels. Semantic score = 0.4 lexical TF-IDF + 0.6 LSA (TruncatedSVD) cosine
+  vs a distilled JD query. An additive rule layer encodes the JD's explicit
+  signals: 5-9yr band, entire-career-consulting disqualifier, IR/NLP reward vs
+  CV/speech/robotics penalty, keyword-stuffing penalty, and honeypot detection
+  via internal impossibilities. A behavioral multiplier (recency, recruiter
+  response, open-to-work, interview completion) down-weights candidates who are
+  not realistically available. Sort desc, tie-break candidate_id ascending.
+  Fully CPU/offline; ~seconds on the full pool.
+
+# ---------------------------------------------------------------------------
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
