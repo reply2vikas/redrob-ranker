@@ -1,34 +1,33 @@
 # Redrob Hackathon — Submission Metadata
-# Fill in the <<< ... >>> placeholders with your real details before submitting.
 
-team_name: "<<< your registered team / participant ID >>>"
+team_name: "TheVK7"
 
 primary_contact:
   name: "Vikas Kumar"
-  email: "<<< your email >>>"
-  phone: "<<< +91-XXXXXXXXXX >>>"
+  email: "vikas.reply@gmail.com"
+  phone: "+91-9008000270"
 
 team_members:
   - name: "Vikas Kumar"
-    email: "<<< your email >>>"
+    email: "vikas.reply@gmail.com"
     role: "Team Lead / ML Engineer"
 
 # ---------------------------------------------------------------------------
-github_repo: "<<< https://github.com/YOUR_USERNAME/redrob-ranker >>>"
-sandbox_link: "<<< your Colab notebook share link (see colab_sandbox.ipynb) >>>"
+github_repo: "https://github.com/reply2vikas/redrob-ranker"
+sandbox_link: "https://colab.research.google.com/drive/1rR1xjqXWVa90A4dgCgJ1qKwcrnchqUpo?usp=sharing"
 reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
 
 # ---------------------------------------------------------------------------
 compute:
-  platform: "Google Colab (CPU runtime)  /  MacBook"   # edit to match where you ran it
+  platform: "Google Colab (CPU runtime)"
   cpu_cores: 4
   ram_gb: 16
   python_version: "3.11"
   os: "Ubuntu 22.04 (Colab)"
-  uses_gpu_for_inference: false          # ranking step is CPU-only
-  has_network_during_ranking: false      # no API calls during ranking
-  pre_computation_required: false        # default TF-IDF+LSA needs no precompute
-  pre_computation_time_minutes: 0        # set >0 only if you use the MiniLM upgrade
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
 
 # ---------------------------------------------------------------------------
 ai_tools_used:
