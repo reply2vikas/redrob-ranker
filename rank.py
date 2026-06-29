@@ -95,8 +95,10 @@ def hybrid_semantic_scores(texts: list[str]) -> np.ndarray:
     semantic = (Xr @ qr.T).ravel()
 
     def scale(a):
-        lo, hi = np.percentile(a, 1), np.percentile(a, 99)
-        return np.clip((a - lo) / (hi - lo + 1e-9), 0, 1)
+        # full-range min-max: preserve ordering across the WHOLE population so
+        # the top 0.1% keep distinct semantic scores (critical for NDCG@10).
+        lo, hi = a.min(), a.max()
+        return (a - lo) / (hi - lo + 1e-9)
 
     return 0.4 * scale(lexical) + 0.6 * scale(semantic)
 
