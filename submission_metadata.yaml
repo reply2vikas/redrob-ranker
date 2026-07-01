@@ -14,7 +14,7 @@ team_members:
 
 # ---------------------------------------------------------------------------
 github_repo: "https://github.com/reply2vikas/redrob-ranker"
-sandbox_link: "https://colab.research.google.com/drive/1rR1xjqXWVa90A4dgCgJ1qKwcrnchqUpo?usp=sharing"
+sandbox_link: "https://colab.research.google.com/drive/1QjGD-llLdrWJurXHAYfJXfZJ8pEwgSWN?usp=sharing"
 reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
 
 # ---------------------------------------------------------------------------
